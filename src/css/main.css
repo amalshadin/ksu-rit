@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  /* KSU Brand Colors - Refined for Dark Theme */
+  --color-primary: #0044cc;
+  --color-primary-glow: rgba(0, 68, 204, 0.4);
+  --color-accent: #00aeef;
+  --color-accent-glow: rgba(0, 174, 239, 0.4);
+  
+  --color-text: #ffffff;
+  --color-text-muted: #a0aec0;
+  
+  --color-bg: #0a1a37;
+  --color-bg-dark: #050f1e;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
+  
+  /* Fluid Typography */
+  --h1: clamp(2.5rem, 8vw, 4.5rem);
+  --h2: clamp(1.8rem, 6vw, 2.8rem);
+  --body: clamp(1rem, 2vw, 1.125rem);
+
+  /* Effects */
+  --shadow-glow: 0 0 20px var(--color-primary-glow);
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 16px;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-bg-dark);
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.loading {
+  opacity: 0;
+}
+
+/* Typography Base */
+h1, h2, h3 { 
+  font-weight: 700; 
+  letter-spacing: -0.02em; 
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); }
+
+p { 
+  font-size: var(--body); 
+  color: var(--color-text-muted);
+  max-width: 70ch;
+  margin-bottom: 1.5rem;
+}
+
+/* Layout Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Page Hero - Premium Look */
+.page-hero {
+  position: relative;
+  padding: 10rem 0 6rem;
+  background: radial-gradient(circle at 50% 0%, #1a3a6d 0%, var(--color-bg) 70%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.page-hero h1 {
+  background: linear-gradient(135deg, #fff 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px var(--color-accent-glow));
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.25rem;
+  margin: 1.5rem auto;
+}
+
+/* Content Sections */
+section {
+  padding: 5rem 0;
+}
+
+.content-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 3rem;
+  border-radius: var(--radius);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Helpers */
+.text-accent { color: var(--color-accent); }
+.hidden-mobile { display: none; }
+
+@media (min-width: 768px) {
+  .hidden-mobile { display: block; }
+  .page-hero { padding: 14rem 0 8rem; }
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg-dark); }
+::-webkit-scrollbar-thumb { 
+  background: var(--color-border); 
+  border-radius: 5px; 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
