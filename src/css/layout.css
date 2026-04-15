@@ -4,7 +4,8 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(10, 26, 55, 0.82); /* Match dark theme bg */
+  background: rgba(10, 26, 55, 0.82);
+  /* Match dark theme bg */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -21,7 +22,8 @@
 }
 
 .navbar a img {
-  height: 50px; /* Refined size */
+  height: 50px;
+  /* Refined size */
   width: auto;
   transition: var(--transition);
 }
@@ -84,7 +86,8 @@
 }
 
 .nav-links.active .nav-link:visited {
-  color: #fff; /* Same as unvisited */
+  color: #fff;
+  /* Same as unvisited */
 }
 
 .nav-links.active .nav-link.active {
@@ -93,8 +96,15 @@
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 768px) {
@@ -149,7 +159,7 @@ footer {
 
 .footer-grid {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 4rem;
   text-align: center;
 }
@@ -196,7 +206,8 @@ footer {
   box-shadow: 0 10px 20px rgba(0, 174, 239, 0.3);
 }
 
-.footer-links h3, .footer-contact h3 {
+.footer-links h3,
+.footer-contact h3 {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   color: #fff;
@@ -250,18 +261,40 @@ footer {
   color: rgba(255, 255, 255, 0.3);
 }
 
+.footer-dev-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-dev-links a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: var(--transition);
+}
+
+.footer-dev-links a:hover {
+  color: var(--color-accent);
+  padding-left: 5px;
+}
+
+.footer-dev-links a:visited {
+  color: var(--color-text-muted);
+}
+
 /* Desktop: Horizontal Layout */
 @media (min-width: 992px) {
   .footer-grid {
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     text-align: left;
   }
-  
+
   .footer-brand p {
     margin: 0 0 2rem 0;
   }
-  
+
   .social-links {
     justify-content: flex-start;
   }
