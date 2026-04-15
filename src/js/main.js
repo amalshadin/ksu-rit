@@ -1,5 +1,6 @@
 import navbarHTML from '../components/navbar.html?raw';
 import footerHTML from '../components/footer.html?raw';
+import logoURL from '../assets/ksuritlogo.png';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Remove loading class to trigger fade-in
@@ -14,9 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadSharedComponents() {
     const navPlaceholder = document.getElementById('navbar-placeholder');
     if (navPlaceholder) {
-        navPlaceholder.innerHTML = navbarHTML;
+        // Replace the dev path with the actual processed asset URL
+        const finalNavHTML = navbarHTML.replace('/src/assets/ksuritlogo.png', logoURL);
+        navPlaceholder.innerHTML = finalNavHTML;
         highlightActiveLink();
-        
+
         // Initialize menu AFTER the button is added to the DOM
         initMobileMenu();
     }
@@ -44,7 +47,7 @@ function initMobileMenu() {
             card.classList.remove('pulse');
             void card.offsetWidth; // Trigger reflow
             card.classList.add('pulse');
-            
+
             // Optional: Remove class after animation ends to keep DOM clean
             setTimeout(() => {
                 card.classList.remove('pulse');
