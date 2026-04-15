@@ -48,9 +48,24 @@ function initMobileMenu() {
 
     if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active')
+            navLinks.classList.toggle('active');
         });
     }
+
+    // Add Pulse effect logic for Event Cards
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.event-card');
+        if (card) {
+            card.classList.remove('pulse');
+            void card.offsetWidth; // Trigger reflow
+            card.classList.add('pulse');
+            
+            // Optional: Remove class after animation ends to keep DOM clean
+            setTimeout(() => {
+                card.classList.remove('pulse');
+            }, 450);
+        }
+    });
 }
 
 function highlightActiveLink() {
