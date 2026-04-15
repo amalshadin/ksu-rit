@@ -439,8 +439,10 @@ section {
   text-decoration: none;
   font-weight: 600;
   transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
   gap: 10px;
 }
 
@@ -465,6 +467,21 @@ section {
 .hero-btn-outline:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
+}
+
+.btn-sm {
+  padding: 0.7rem 1.25rem !important;
+  font-size: 0.85rem !important;
+  border-radius: 12px !important;
+  gap: 8px !important;
+  min-width: 160px; /* Ensure consistent width */
+}
+
+.btn-sm i {
+  font-size: 1.1rem !important;
+  line-height: 1;
+  display: inline-block;
+  margin: 0 !important;
 }
 
 /* Featured Section (KEAM) */
