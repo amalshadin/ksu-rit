@@ -1,7 +1,5 @@
-/**
- * KSU RIT Unit - Main JS
- * Responsible for global animations, mobile menu, and shared component loading.
- */
+import navbarHTML from '../components/navbar.html?raw';
+import footerHTML from '../components/footer.html?raw';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Remove loading class to trigger fade-in
@@ -13,32 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSharedComponents();
 });
 
-async function loadSharedComponents() {
-    const navbarPath = '/src/components/navbar.html';
-    const footerPath = '/src/components/footer.html';
-
+function loadSharedComponents() {
     const navPlaceholder = document.getElementById('navbar-placeholder');
     if (navPlaceholder) {
-        try {
-            const navHTML = await fetch(navbarPath).then(res => res.text());
-            navPlaceholder.innerHTML = navHTML;
-            highlightActiveLink();
-
-            // CRITICAL: Initialize menu AFTER the button is added to the DOM
-            initMobileMenu();
-        } catch (err) {
-            console.error("Navbar failed to load:", err);
-        }
+        navPlaceholder.innerHTML = navbarHTML;
+        highlightActiveLink();
+        
+        // Initialize menu AFTER the button is added to the DOM
+        initMobileMenu();
     }
 
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
-        try {
-            const footerHTML = await fetch(footerPath).then(res => res.text());
-            footerPlaceholder.innerHTML = footerHTML;
-        } catch (err) {
-            console.error("Footer failed to load:", err);
-        }
+        footerPlaceholder.innerHTML = footerHTML;
     }
 }
 
