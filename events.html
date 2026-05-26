@@ -24,40 +24,45 @@
             </section>
 
             <section class="container">
-                <div class="event-grid">
-                    <!-- Event Card 1 -->
-                    <div class="event-card">
-                        <span class="event-date">Oct 15, 2026</span>
-                        <h3>Revolutionize RIT</h3>
-                        <p>A flagship leadership workshop aimed at empowering students through activism and skill
-                            development.</p>
-                    </div>
-
-                    <!-- Event Card 2 -->
-                    <div class="event-card">
-                        <span class="event-date">Nov 02, 2026</span>
-                        <h3>Blood Donation Camp</h3>
-                        <p>Joining hands to save lives. Our annual community service initiative in collaboration with
-                            local hospitals.</p>
-                    </div>
-
-                    <!-- Event Card 3 -->
-                    <div class="event-card">
-                        <span class="event-date">Dec 12, 2026</span>
-                        <h3>Tech for Change</h3>
-                        <p>A hackathon focused on building digital solutions for campus problems and social welfare.</p>
-                    </div>
-
-                    <!-- Event Card 4 -->
-                    <div class="event-card">
-                        <span class="event-date">Jan 05, 2027</span>
-                        <h3>Arts Festival Support</h3>
-                        <p>Volunteering and coordinating for the RIT internal arts festival to ensure smooth conduct.
-                        </p>
-                    </div>
+                <div class="event-grid" id="event-grid">
+                    <!-- Event cards will be dynamically rendered here by JavaScript -->
                 </div>
             </section>
         </main>
+
+        <!-- Modal Overlay for Event Details -->
+        <div id="event-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+            <div class="modal-window">
+                <button id="modal-close" class="modal-close-btn" aria-label="Close modal">&times;</button>
+                <div class="modal-body">
+                    <div class="modal-info-col">
+                        <span id="modal-event-date" class="event-date"></span>
+                        <h2 id="modal-event-title"></h2>
+                        <div class="modal-meta-item">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                            <span id="modal-event-venue"></span>
+                        </div>
+                        <p id="modal-event-description" class="modal-desc"></p>
+                    </div>
+                    <div class="modal-slider-col">
+                        <div class="slider-container">
+                            <div class="slider-wrapper" id="slider-wrapper">
+                                <!-- Slides will be dynamically rendered here -->
+                            </div>
+                            <button class="slider-arrow prev" id="slider-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next" id="slider-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="slider-dots" id="slider-dots">
+                                <!-- Dot indicators will be dynamically rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer id="footer-placeholder"></footer>
     </div>
