@@ -80,8 +80,8 @@ const EVENTS_DATA = [
         date: "May 25, 2026",
         venue: "Online",
         description: "KSU RIT brings you an electrifying eFootball Tournament as part of the FIFA 2026 celebrations! Get ready to showcase your skills, compete against the best players on campus, and experience the thrill of virtual football like never before. Whether you're a casual gamer or a competitive pro, this is your chance to battle for glory, exciting prizes, and ultimate bragging rights. Gather your squad, pick your team, and let the kickoff begin!",
-        poster: "/public/events/ksurit_fifa26_efootball_touranament.jpeg",
-        images: ["/public/events/ksurit_fifa26_efootball_touranament.jpeg"
+        poster: "/events/ksurit_fifa26_efootball_touranament.jpeg",
+        images: ["/events/ksurit_fifa26_efootball_touranament.jpeg"
         ]
     },
     {
@@ -90,11 +90,11 @@ const EVENTS_DATA = [
         date: "Mar 30, 2026",
         venue: "College Auditorium",
         description: "On 30th March 2026, KSU organized a mesmerizing Ghazal Night featuring the soulful performances of the Dilrubha Muttippatt. The event created an enchanting musical atmosphere filled with timeless melodies, poetic lyrics, and captivating live music. Students gathered to enjoy an unforgettable evening of rhythm, emotion, and cultural celebration that made the night truly special.",
-        poster: "/public/events/Ehsas26.jpg",
+        poster: "/events/Ehsas26.jpg",
         images: [
-            "/public/events/Ehsas26.jpg",
-            "/public/gallery/ksurit_4.jpg",
-            "/public/gallery/ksurit_5.jpg",
+            "/events/Ehsas26.jpg",
+            "/gallery/ksurit_4.jpg",
+            "/gallery/ksurit_5.jpg",
         ]
     },
     {
