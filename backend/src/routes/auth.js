@@ -7,7 +7,7 @@ import { verifyAdminToken } from '../middleware/auth.js';
 dotenv.config();
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_key_change_me_in_production';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 /**
  * @route   POST /api/auth/login
@@ -18,20 +18,20 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Please provide both username and password.' 
+        return res.status(400).json({
+            success: false,
+            message: 'Please provide both username and password.'
         });
     }
 
-    const envUsername = process.env.ADMIN_USERNAME || 'admin';
-    const envPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const envUsername = process.env.ADMIN_USERNAME;
+    const envPassword = process.env.ADMIN_PASSWORD;
 
     // Verify username matches
     if (username !== envUsername) {
-        return res.status(401).json({ 
-            success: false, 
-            message: 'Invalid credentials.' 
+        return res.status(401).json({
+            success: false,
+            message: 'Invalid credentials.'
         });
     }
 
@@ -46,23 +46,23 @@ router.post('/login', async (req, res) => {
         } else {
             // Direct comparison for plain text (development convenience)
             isMatch = (password === envPassword);
-            
+
             if (isMatch && process.env.NODE_ENV === 'production') {
                 console.warn('SECURITY WARNING: Using plain-text password in production environment. Please replace with a bcrypt hash.');
             }
         }
 
         if (!isMatch) {
-            return res.status(401).json({ 
-                success: false, 
-                message: 'Invalid credentials.' 
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials.'
             });
         }
 
         // Generate JWT token
         const token = jwt.sign(
-            { username: envUsername }, 
-            JWT_SECRET, 
+            { username: envUsername },
+            JWT_SECRET,
             { expiresIn: '24h' }
         );
 
@@ -76,9 +76,9 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         console.error('Login error:', error);
-        return res.status(500).json({ 
-            success: false, 
-            message: 'An error occurred during authentication.' 
+        return res.status(500).json({
+            success: false,
+            message: 'An error occurred during authentication.'
         });
     }
 });
