@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | KSU RIT Unit</title>
+    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/src/css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="/src/assets/ksutorch.png">
+</head>
+
+<body class="loading">
+    <div id="app">
+        <header id="navbar-placeholder"></header>
+
+        <main>
+            <section class="page-hero">
+                <div class="container">
+                    <h1>Events & Programs</h1>
+                    <p>Relive the moments and stay updated with our upcoming initiatives.</p>
+                </div>
+            </section>
+
+            <section class="container">
+                <div class="event-grid" id="event-grid">
+                    <!-- Event cards will be dynamically rendered here by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal Overlay for Event Details -->
+        <div id="event-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+            <div class="modal-window">
+                <button id="modal-close" class="modal-close-btn" aria-label="Close modal">&times;</button>
+                <div class="modal-body">
+                    <div class="modal-info-col">
+                        <span id="modal-event-date" class="event-date"></span>
+                        <h2 id="modal-event-title"></h2>
+                        <div class="modal-meta-item">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                            <span id="modal-event-venue"></span>
+                        </div>
+                        <p id="modal-event-description" class="modal-desc"></p>
+                    </div>
+                    <div class="modal-slider-col">
+                        <div class="slider-container">
+                            <div class="slider-wrapper" id="slider-wrapper">
+                                <!-- Slides will be dynamically rendered here -->
+                            </div>
+                            <button class="slider-arrow prev" id="slider-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next" id="slider-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="slider-dots" id="slider-dots">
+                                <!-- Dot indicators will be dynamically rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer-placeholder"></footer>
+    </div>
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

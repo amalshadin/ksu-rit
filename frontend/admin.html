@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Admin Portal | KSU RIT</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/src/css/components/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="/src/assets/ksutorch.png">
+</head>
+
+<body class="admin-body">
+
+    <!-- 1. AUTH LOGIN VIEW -->
+    <div id="auth-portal" class="auth-wrapper">
+        <div class="auth-card">
+            <img src="/src/assets/ksuritlogo.png" alt="KSU RIT Logo" class="auth-logo" onerror="this.src='/favicon.svg'">
+            <h2>Admin Login</h2>
+            <p>Enter your CMS credentials to access the console</p>
+
+            <div id="login-alert" class="alert-box alert-danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="login-alert-text">Incorrect username or password.</span>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="admin" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-admin">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. DASHBOARD CMS VIEW -->
+    <div id="dashboard-portal" class="dashboard-container" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="/src/assets/ksuritlogo.png" alt="KSU RIT Logo" class="sidebar-logo" onerror="this.src='/favicon.svg'">
+                <div class="sidebar-title">KSU RIT CMS</div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item active" id="tab-events-btn">
+                    <button><i class="fa-solid fa-calendar-days"></i> Manage Events</button>
+                </li>
+                <li class="menu-item" id="tab-gallery-btn">
+                    <button><i class="fa-solid fa-images"></i> Manage Gallery</button>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn-logout">
+                    <i class="fa-solid fa-power-off"></i> Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main CMS Panel -->
+        <main class="admin-main">
+            <!-- Events Management Panel -->
+            <div id="events-panel" class="cms-panel active">
+                <div class="main-header">
+                    <div>
+                        <h1>Event Management</h1>
+                        <p class="welcome-text">Create, update, and manage campus events and program details.</p>
+                    </div>
+                    <button class="btn-admin" style="width: auto;" id="create-event-btn">
+                        <i class="fa-solid fa-plus"></i> Add Event
+                    </button>
+                </div>
+
+                <div class="table-card">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Poster</th>
+                                <th>Event Details</th>
+                                <th>Venue</th>
+                                <th>Date</th>
+                                <th style="width: 120px; text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="events-table-body">
+                            <!-- Dynamically loaded events list -->
+                        </tbody>
+                    </table>
+                    <div id="events-empty" class="empty-state" style="display: none;">
+                        <i class="fa-solid fa-calendar-xmark"></i>
+                        <h3>No events found</h3>
+                        <p>Click "Add Event" to create your first event record.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Management Panel -->
+            <div id="gallery-panel" class="cms-panel">
+                <div class="main-header">
+                    <div>
+                        <h1>Gallery Management</h1>
+                        <p class="welcome-text">Upload and manage public image feeds from campus life.</p>
+                    </div>
+                    <button class="btn-admin" style="width: auto;" id="upload-gallery-btn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                    </button>
+                </div>
+
+                <div class="table-card">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Photo</th>
+                                <th>Title / Caption</th>
+                                <th>Category</th>
+                                <th>Uploaded Date</th>
+                                <th style="width: 120px; text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gallery-table-body">
+                            <!-- Dynamically loaded gallery items -->
+                        </tbody>
+                    </table>
+                    <div id="gallery-empty" class="empty-state" style="display: none;">
+                        <i class="fa-solid fa-image-portrait"></i>
+                        <h3>No gallery photos found</h3>
+                        <p>Click "Upload Photo" to add images to the public gallery.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3. CREATE/EDIT EVENT MODAL -->
+    <div id="event-modal" class="admin-modal">
+        <div class="modal-content-card">
+            <div class="modal-header">
+                <h2 id="event-modal-title">Add New Event</h2>
+                <button class="modal-close" id="event-modal-close">&times;</button>
+            </div>
+            <form id="event-form">
+                <input type="hidden" id="event-id">
+                <div class="modal-body-scroll">
+                    <div id="event-alert" class="alert-box alert-danger"></div>
+
+                    <div class="form-group">
+                        <label for="event-title-input">Event Title</label>
+                        <input type="text" id="event-title-input" class="form-input" placeholder="e.g. Ghazal Night 2026" required>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="event-date-input">Event Date</label>
+                            <input type="text" id="event-date-input" class="form-input" placeholder="e.g. Mar 30, 2026" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-venue-input">Venue</label>
+                            <input type="text" id="event-venue-input" class="form-input" placeholder="e.g. College Auditorium" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-desc-input">Description</label>
+                        <textarea id="event-desc-input" class="form-input" rows="4" placeholder="Event details and summary..." required style="resize: vertical;"></textarea>
+                    </div>
+
+                    <!-- Main Cover Poster -->
+                    <div class="form-group">
+                        <label>Cover Poster Image (Required)</label>
+                        <div class="file-drop-area" id="poster-dropzone">
+                            <i class="fa-solid fa-image"></i>
+                            <span class="file-drop-label">Drag & drop cover poster here or click to browse</span>
+                            <span class="file-drop-subtext">JPG, PNG, WEBP, or SVG (Max size 10MB)</span>
+                            <input type="file" id="event-poster-file" class="file-input-hidden" accept="image/*">
+                        </div>
+                        <div class="thumbnail-preview-container" id="poster-preview-container">
+                            <!-- Cover preview thumbnail -->
+                        </div>
+                    </div>
+
+                    <!-- Multi-Slider Photos -->
+                    <div class="form-group">
+                        <label>Additional Photos (Max 10 images)</label>
+                        <div class="file-drop-area" id="slider-dropzone">
+                            <i class="fa-solid fa-images"></i>
+                            <span class="file-drop-label">Drag & drop slider images here or click to browse</span>
+                            <span class="file-drop-subtext">Select multiple images (Max size 10MB each)</span>
+                            <input type="file" id="event-slider-files" class="file-input-hidden" accept="image/*" multiple>
+                        </div>
+                        <div class="thumbnail-preview-container" id="slider-previews-container">
+                            <!-- Slider preview thumbnails -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-admin btn-secondary" id="event-cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-admin" id="event-submit-btn">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. UPLOAD/EDIT GALLERY MODAL -->
+    <div id="gallery-modal" class="admin-modal">
+        <div class="modal-content-card">
+            <div class="modal-header">
+                <h2 id="gallery-modal-title">Upload Gallery Photo</h2>
+                <button class="modal-close" id="gallery-modal-close">&times;</button>
+            </div>
+            <form id="gallery-form">
+                <input type="hidden" id="gallery-id">
+                <div class="modal-body-scroll">
+                    <div id="gallery-alert" class="alert-box alert-danger"></div>
+
+                    <div class="form-group">
+                        <label for="gallery-title-input">Caption / Title (Optional)</label>
+                        <input type="text" id="gallery-title-input" class="form-input" placeholder="e.g. Sports Day inauguration">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gallery-category-input">Category / Tag</label>
+                        <input type="text" id="gallery-category-input" class="form-input" placeholder="e.g. sports, cultural, academics">
+                    </div>
+
+                    <!-- Gallery Image File -->
+                    <div class="form-group">
+                        <label>Image File (Required)</label>
+                        <div class="file-drop-area" id="gallery-dropzone">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span class="file-drop-label">Drag & drop image here or click to browse</span>
+                            <span class="file-drop-subtext">JPG, PNG, WEBP, or SVG (Max size 10MB)</span>
+                            <input type="file" id="gallery-file" class="file-input-hidden" accept="image/*">
+                        </div>
+                        <div class="thumbnail-preview-container" id="gallery-preview-container">
+                            <!-- Gallery preview thumbnail -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-admin btn-secondary" id="gallery-cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-admin" id="gallery-submit-btn">Upload Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Entry Point -->
+    <script type="module" src="/src/js/admin.js"></script>
+</body>
+
+</html>

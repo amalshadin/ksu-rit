@@ -1,0 +1,590 @@
+/* Admin CMS Premium Styling */
+:root {
+    --color-admin-bg: #070f1e;
+    --color-admin-card: rgba(15, 32, 67, 0.45);
+    --color-admin-border: rgba(255, 255, 255, 0.08);
+    --color-admin-text: #f3f4f6;
+    --color-admin-muted: #9ca3af;
+    --color-admin-accent: #00aeef;
+    --color-admin-accent-glow: rgba(0, 174, 239, 0.35);
+    --color-admin-danger: #ef4444;
+    --color-admin-success: #10b981;
+}
+
+body.admin-body {
+    background-color: var(--color-admin-bg);
+    color: var(--color-admin-text);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Auth Portal */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    background: radial-gradient(circle at center, #0e1e3c 0%, #050b15 100%);
+}
+
+.auth-card {
+    background: var(--color-admin-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-admin-border);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-logo {
+    height: 60px;
+    margin-bottom: 1.5rem;
+}
+
+.auth-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.auth-card p {
+    color: var(--color-admin-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-admin-muted);
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(5, 10, 20, 0.6);
+    border: 1px solid var(--color-admin-border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-admin-accent);
+    box-shadow: 0 0 0 3px var(--color-admin-accent-glow);
+}
+
+.btn-admin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(135deg, #0088cc 0%, var(--color-admin-accent) 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 0.5rem;
+}
+
+.btn-admin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--color-admin-accent-glow);
+}
+
+.btn-admin:active {
+    transform: translateY(0);
+}
+
+.btn-admin.btn-danger {
+    background: linear-gradient(135deg, #dc2626 0%, var(--color-admin-danger) 100%);
+}
+
+.btn-admin.btn-danger:hover {
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+}
+
+.btn-admin.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-admin-border);
+    color: #fff;
+}
+
+.btn-admin.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+}
+
+/* Error/Success Messages */
+.alert-box {
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideDown 0.3s ease;
+}
+
+.alert-danger {
+    display: flex;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.alert-success {
+    display: flex;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #a7f3d0;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    background: rgba(5, 11, 22, 0.95);
+    border-right: 1px solid var(--color-admin-border);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+}
+
+.sidebar-logo {
+    height: 40px;
+}
+
+.sidebar-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.menu-item button {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--color-admin-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+}
+
+.menu-item button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.menu-item.active button {
+    color: #fff;
+    background: rgba(0, 174, 239, 0.15);
+    border-left: 3px solid var(--color-admin-accent);
+}
+
+.sidebar-footer {
+    border-top: 1px solid var(--color-admin-border);
+    padding-top: 1.5rem;
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fca5a5;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.btn-logout:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Main Content Area */
+.admin-main {
+    padding: 3rem;
+    overflow-y: auto;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.main-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.welcome-text {
+    color: var(--color-admin-muted);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+/* CMS Panels */
+.cms-panel {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.cms-panel.active {
+    display: block;
+}
+
+/* Data Table list */
+.table-card {
+    background: var(--color-admin-card);
+    border: 1px solid var(--color-admin-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--color-admin-border);
+    padding: 1.2rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-admin-muted);
+}
+
+.admin-table td {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--color-admin-border);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.cell-thumbnail {
+    width: 60px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.cell-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-admin-border);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--color-admin-accent);
+    border-color: var(--color-admin-accent);
+}
+
+.btn-icon.btn-icon-danger:hover {
+    background: var(--color-admin-danger);
+    border-color: var(--color-admin-danger);
+}
+
+/* Empty State */
+.empty-state {
+    padding: 5rem 2rem;
+    text-align: center;
+    color: var(--color-admin-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-admin-border);
+}
+
+/* Modals */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 9, 20, 0.85);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.admin-modal.active {
+    display: flex;
+}
+
+.modal-content-card {
+    background: #0d1b35;
+    border: 1px solid var(--color-admin-border);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: var(--color-admin-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-body-scroll {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--color-admin-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* File Upload Drag zone */
+.file-drop-area {
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 0.5rem;
+}
+
+.file-drop-area:hover,
+.file-drop-area.dragover {
+    border-color: var(--color-admin-accent);
+    background: rgba(0, 174, 239, 0.05);
+}
+
+.file-drop-area i {
+    font-size: 2rem;
+    color: var(--color-admin-muted);
+    margin-bottom: 0.75rem;
+}
+
+.file-drop-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.file-drop-subtext {
+    font-size: 0.75rem;
+    color: var(--color-admin-muted);
+    margin-top: 0.25rem;
+}
+
+.file-input-hidden {
+    display: none;
+}
+
+/* Image Previews inside forms */
+.thumbnail-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.preview-thumbnail {
+    position: relative;
+    width: 80px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.preview-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-thumbnail-delete {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(239, 68, 68, 0.9);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.preview-thumbnail-delete:hover {
+    background: #ef4444;
+}
+
+/* Grid Layout for Forms */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+    .admin-sidebar {
+        display: none; /* In production, add a mobile menu toggle, but let's optimize for clean desktop view for CMS managers */
+    }
+    .admin-main {
+        padding: 1.5rem;
+    }
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
